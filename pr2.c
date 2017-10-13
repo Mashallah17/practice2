@@ -9,7 +9,7 @@ int main(){
 	scanf("%d %d", &n, &m);
 	/*Выделение памяти*/
 	a = (int**)malloc(n*sizeof(int*));
-	/*srand(time(NULL));*/ /*Для различных рандомных чисел*/
+	srand(time(NULL)); /*Для различных рандомных чисел*/
 	/*Заполнение двумерного массива*/
 	for (i = 0; i < n; i++){
 		a[i] = (int*)malloc(m*sizeof(int));
