@@ -22,6 +22,7 @@ int main(){
 			printf("%d  ",  a[i][j]);
 		printf("\n");
 	}
+	printf("\n");
 	/*Разворачивание первой и последней строки*/
 	for(j = 0; j<n; j+=(n-1))
 		for(i = 0; i < (m/2); i++){
@@ -36,6 +37,15 @@ int main(){
 	b = a[0];
 	a[0]=a[n-1];
 	a[n-1]=b;
+
+	    /*Распечатка*/
+	for (i = 0; i < n; i++){
+		for (j = 0; j < m; j++)
+			printf("%d  ",  a[i][j]);
+		printf("\n");
+	}
+	printf("\n");
+
 
 	/*Нахождение наименьшего элемента двумерного массива*/
 	int nomberI = 0, nomberJ = 0, min = a[0][0];
@@ -70,6 +80,7 @@ int main(){
 			printf("%d  ",  a[i][j]);
 		printf("\n");
 	}
+	printf("\n");
 
     /*Ввод массива с клавиатура*/
 	printf("Enter an array size %d x %d\n", n, m);
@@ -100,6 +111,7 @@ int main(){
 			printf("%d  ",  c[i][j]);
 		printf("\n");
 	}
+	printf("\n");
 
     /*Освобождение памяти*/
     for (i = 0; i < n; i++){
