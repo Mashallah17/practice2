@@ -79,7 +79,7 @@ int main(){
 	for (i = 0; i < m; i++){
         d[i] = (int*)malloc(n*sizeof(int));
         for(j = 0; j < n; j++)
-            scanf("%d", b);
+            scanf("%d", &d[i][j]);
 	}
 
     /*Умножение матрицы А на Б*/
@@ -89,7 +89,7 @@ int main(){
       c[i]=(int*)malloc(n*sizeof(int));
       for(j = 0; j < n; j++){
         c[i][j]=0;
-        for(l = 0; l < n; l++)
+        for(l = 0; l < m; l++)
             c[i][j] += a[j][l]*d[l][j];
      }
     }
@@ -97,7 +97,7 @@ int main(){
     /*Распечатка*/
 	for (i = 0; i < n; i++){
 		for (j = 0; j < n; j++)
-			printf("%d  ",  a[i][j]);
+			printf("%d  ",  c[i][j]);
 		printf("\n");
 	}
 
