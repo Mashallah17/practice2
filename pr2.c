@@ -1,4 +1,3 @@
-/* gcc --std=c89 -Wall -Werror pr2.c -o pr2.exe */
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
@@ -6,20 +5,22 @@
 int main(){
 	int n, m, i, j, l;
 	int **a; /*Укзатель на массив*/
+	printf("Enter the size of the initial array\n");
 	scanf("%d %d", &n, &m);
 	/*Выделение памяти*/
 	a = (int**)malloc(n*sizeof(int*));
-	srand(time(NULL)); /*Для различных рандомных чисел*/
+	/*srand(time(NULL));*/ /*Для различных рандомных чисел*/
 	/*Заполнение двумерного массива*/
 	for (i = 0; i < n; i++){
 		a[i] = (int*)malloc(m*sizeof(int));
 		for (j = 0; j < m; j++)
-			a[i][j] = rand()%100+1;
+			a[i][j] = rand()%10+1;
 	}
 	/*Вывод массива*/
+	printf("Initial array:\n");
 	for (i = 0; i < n; i++){
 		for (j = 0; j < m; j++)
-			printf("%d  ",  a[i][j]);
+			printf("%3.d  ",  a[i][j]);
 		printf("\n");
 	}
 	printf("\n");
@@ -37,11 +38,12 @@ int main(){
 	b = a[0];
 	a[0]=a[n-1];
 	a[n-1]=b;
-
-	    /*Распечатка*/
+	
+	printf("An array with mirrored and rearranged first and last lines:\n");
+	/*Распечатка*/
 	for (i = 0; i < n; i++){
 		for (j = 0; j < m; j++)
-			printf("%d  ",  a[i][j]);
+			printf("%3.d  ",  a[i][j]);
 		printf("\n");
 	}
 	printf("\n");
@@ -74,16 +76,18 @@ int main(){
         }
 	}
 	m--;
+
+	printf("An array with a deleted column and row\n");
     /*Распечатка*/
 	for (i = 0; i < n; i++){
 		for (j = 0; j < m; j++)
-			printf("%d  ",  a[i][j]);
+			printf("%3.d  ",  a[i][j]);
 		printf("\n");
 	}
 	printf("\n");
 
     /*Ввод массива с клавиатура*/
-	printf("Enter an array size %d x %d\n", n, m);
+	printf("Enter an array size %d x %d\n", m, n);
 	free(b);
 	int **d;
 	d = (int**)malloc(m*sizeof(int*));
@@ -96,22 +100,21 @@ int main(){
     /*Умножение матрицы А на Б*/
     int **c;
     c = (int**)malloc(n*sizeof(int*));
-    for (i = 0; i < n; i++){
-      c[i]=(int*)malloc(n*sizeof(int));
-      for(j = 0; j < n; j++){
-        c[i][j]=0;
-        for(l = 0; l < m; l++)
-            c[i][j] += a[j][l]*d[l][j];
-     }
+	for(i = 0; i < n; i++){
+		c[i] = (int*)malloc(n*sizeof(int));
+    	for(j = 0; j < n; j++){
+        	c[i][j] = 0;
+        	for(l = 0; l < m; l++)
+            	c[i][j] += a[i][l] * d[l][j];
     }
-
+	}	
     /*Распечатка*/
+    printf("\nNew array:\n");
 	for (i = 0; i < n; i++){
 		for (j = 0; j < n; j++)
-			printf("%d  ",  c[i][j]);
+			printf("%3.d  ",  c[i][j]);
 		printf("\n");
 	}
-	printf("\n");
 
     /*Освобождение памяти*/
     for (i = 0; i < n; i++){
