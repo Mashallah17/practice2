@@ -1,6 +1,8 @@
+/*IT'S C99!*/
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
+#include<malloc.h>
 int main(){
 	int n, m, i, j, l;
 	int **a; /*Укзатель на массив*/
