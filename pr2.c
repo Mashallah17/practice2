@@ -6,7 +6,6 @@ int main(){
 	int **a; 
 	printf("Enter the size of the initial array\n");
 	scanf("%d %d", &n, &m);
-	Выделение памяти
 	a = (int**)malloc(n*sizeof(int*));
 	srand(time(NULL));
 	for (i = 0; i < n; i++){
