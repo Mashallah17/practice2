@@ -1,22 +1,19 @@
-/*IT'S C99!*/
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
 int main(){
 	int n, m, i, j, l;
-	int **a; /*Укзатель на массив*/
+	int **a; 
 	printf("Enter the size of the initial array\n");
 	scanf("%d %d", &n, &m);
-	/*Выделение памяти*/
+	Выделение памяти
 	a = (int**)malloc(n*sizeof(int*));
-	/*srand(time(NULL));*/ /*Для различных рандомных чисел*/
-	/*Заполнение двумерного массива*/
+	srand(time(NULL));
 	for (i = 0; i < n; i++){
 		a[i] = (int*)malloc(m*sizeof(int));
 		for (j = 0; j < m; j++)
 			a[i][j] = rand()%10+1;
 	}
-	/*Вывод массива*/
 	printf("Initial array:\n");
 	for (i = 0; i < n; i++){
 		for (j = 0; j < m; j++)
@@ -24,7 +21,6 @@ int main(){
 		printf("\n");
 	}
 	printf("\n");
-	/*Разворачивание первой и последней строки*/
 	for(j = 0; j<n; j+=(n-1))
 		for(i = 0; i < (m/2); i++){
 			l = a[j][i];
@@ -32,7 +28,6 @@ int main(){
 			a[j][m-i-1]= l;
 		}
 
-	/*Первая меняется на последнюю и наоборот*/
 	int *b;
 	b = (int*)malloc(m*sizeof(int));
 	b = a[0];
@@ -49,7 +44,7 @@ int main(){
 	printf("\n");
 
 
-	/*Нахождение наименьшего элемента двумерного массива*/
+
 	int nomberI = 0, nomberJ = 0, min = a[0][0];
 	for (i = 0; i < n; i++)
 		for (j = 0; j < m; j++)
@@ -59,7 +54,6 @@ int main(){
 				nomberJ = j;
 			}
 
-	/*Удаление строки*/
 	for(i = nomberI; i < n - 1; i++){
 		b = a[i];
 		a[i] = a[i+1];
@@ -68,7 +62,7 @@ int main(){
 	free(a[n-1]);
 	n--;
 
-	/*Удаление столбца*/
+
 
 	for (j = nomberJ; j < m-1; j++){
         for (i = 0; i < n; i++){
@@ -78,7 +72,7 @@ int main(){
 	m--;
 
 	printf("An array with a deleted column and row\n");
-    /*Распечатка*/
+
 	for (i = 0; i < n; i++){
 		for (j = 0; j < m; j++)
 			printf("%3.d  ",  a[i][j]);
@@ -86,7 +80,6 @@ int main(){
 	}
 	printf("\n");
 
-    /*Ввод массива с клавиатура*/
 	printf("Enter an array size %d x %d\n", m, n);
 	int **d;
 	d = (int**)malloc(m*sizeof(int*));
@@ -96,7 +89,6 @@ int main(){
             scanf("%d", &d[i][j]);
 	}
 
-    /*Умножение матрицы А на Б*/
     int **c;
     c = (int**)malloc(n*sizeof(int*));
 	for(i = 0; i < n; i++){
@@ -107,7 +99,7 @@ int main(){
             	c[i][j] += a[i][l] * d[l][j];
     }
 	}	
-    /*Распечатка*/
+
     printf("\nNew array:\n");
 	for (i = 0; i < n; i++){
 		for (j = 0; j < n; j++)
@@ -115,7 +107,7 @@ int main(){
 		printf("\n");
 	}
 
-    /*Освобождение памяти*/
+
     for (i = 0; i < n; i++){
         free(a[i]);
         free(d[i]);
