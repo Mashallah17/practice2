@@ -2,7 +2,6 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
-#include<malloc.h>
 int main(){
 	int n, m, i, j, l;
 	int **a; /*Укзатель на массив*/
@@ -89,7 +88,6 @@ int main(){
 
     /*Ввод массива с клавиатура*/
 	printf("Enter an array size %d x %d\n", m, n);
-	free(b);
 	int **d;
 	d = (int**)malloc(m*sizeof(int*));
 	for (i = 0; i < m; i++){
